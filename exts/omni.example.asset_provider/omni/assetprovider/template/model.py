@@ -18,9 +18,9 @@ CURRENT_PATH = Path(__file__).parent
 DATA_PATH = CURRENT_PATH.parent.parent.parent.parent.joinpath("data")
 
 # The name of your company
-PROVIDER_ID = "PROVIDER_NAME"
+PROVIDER_ID = "LAUBWERK"
 # The URL location of your API
-STORE_URL = "https://www.your_store_url.com" 
+STORE_URL = "https://stage.api.laubwerk.com/1/plants/?filter[.relationships.collections.data]=includes(kit-freebie,id)"
 
 
 class TemplateAssetProvider(BaseAssetStore):
@@ -54,7 +54,6 @@ class TemplateAssetProvider(BaseAssetStore):
         # Setting for keywords search criteria
         if search_criteria.keywords:
             params["keywords"] = ",".join(search_criteria.keywords)
-
 
         # Setting for page number search criteria
         if search_criteria.page.number:
@@ -94,6 +93,21 @@ class TemplateAssetProvider(BaseAssetStore):
                 )
             )
 
+        assets.append(
+            AssetModel(
+                identifier="205995fe-dd7c-11eb-ba80-0242ac130004",
+                name="Acer campestre",
+                published_at="",
+                categories=["Vegetation"],
+                tags=["broadleaf", "temperate"],
+                vendor=PROVIDER_ID,
+                product_url="https://stage.api.laubwerk.com/1/images/1086/file?size=thumbnail",
+                download_url="https://stage.api.laubwerk.com/1/images/1086/file?size=thumbnail",
+                price=0.0,
+                thumbnail="https://stage.api.laubwerk.com/1/images/1086/file?size=thumbnail",
+            )
+        )
+
         # Are there more assets that we can load?
         more = True
         if search_criteria.page.size and len(assets) < search_criteria.page.size:
@@ -104,5 +118,5 @@ class TemplateAssetProvider(BaseAssetStore):
     def provider(self) -> ProviderModel:
         """Return provider info"""
         return ProviderModel(
-            name=PROVIDER_ID, icon=f"{DATA_PATH}/logo_placeholder.png", enable_setting=SETTING_STORE_ENABLE
+            name=PROVIDER_ID, icon=f"{DATA_PATH}/laubwerk_logo.png", enable_setting=SETTING_STORE_ENABLE
         )
