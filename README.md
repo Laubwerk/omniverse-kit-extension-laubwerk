@@ -1,1 +1,1 @@
-# omniverse-kit-extension-laubwerk
+# Laubwerk Asset Provider for NVIDIA Omniverse

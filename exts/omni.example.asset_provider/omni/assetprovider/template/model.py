@@ -18,7 +18,7 @@ CURRENT_PATH = Path(__file__).parent
 DATA_PATH = CURRENT_PATH.parent.parent.parent.parent.joinpath("data")
 
 # The name of your company
-PROVIDER_ID = "LAUBWERK"
+PROVIDER_ID = "Laubwerk"
 # The URL location of your API
 STORE_URL = "https://stage.api.laubwerk.com/1/plants/?filter[.relationships.collections.data]=includes(kit-freebie,id)"
 
@@ -97,14 +97,14 @@ class TemplateAssetProvider(BaseAssetStore):
             AssetModel(
                 identifier="205995fe-dd7c-11eb-ba80-0242ac130004",
                 name="Acer campestre",
-                published_at="",
+                published_at="2015-12-07T21:19:08+00:00",
                 categories=["Vegetation"],
                 tags=["broadleaf", "temperate"],
                 vendor=PROVIDER_ID,
                 product_url="https://stage.api.laubwerk.com/1/images/1086/file?size=thumbnail",
                 download_url="https://stage.api.laubwerk.com/1/images/1086/file?size=thumbnail",
                 price=0.0,
-                thumbnail="https://stage.api.laubwerk.com/1/images/1086/file?size=thumbnail",
+                thumbnail="https://stage.api.laubwerk.com/1/static/cache/Acer_campestre_01medium_v069_jws_a5a6138fae09bce7d55af986d846e495.png"
             )
         )
 
