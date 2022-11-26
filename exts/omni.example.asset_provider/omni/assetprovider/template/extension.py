@@ -14,16 +14,16 @@ import carb.tokens
 import omni.ext
 
 from omni.services.browser.asset import get_instance as get_asset_services
-from .model import TemplateAssetProvider
+from .model import LaubwerkAssetProvider
 from .constants import SETTING_STORE_ENABLE
 
 
-class TemplateAssetProviderExtension(omni.ext.IExt):
-    """ Template Asset Provider extension.
+class LaubwerkAssetProviderExtension(omni.ext.IExt):
+    """ Laubwerk Asset Provider extension.
     """
 
     def on_startup(self, ext_id):
-        self._asset_provider = TemplateAssetProvider()
+        self._asset_provider = LaubwerkAssetProvider()
         self._asset_service = get_asset_services()
         self._asset_service.register_store(self._asset_provider)
         carb.settings.get_settings().set(SETTING_STORE_ENABLE, True)
