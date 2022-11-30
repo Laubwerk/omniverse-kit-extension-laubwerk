@@ -14,7 +14,7 @@ import carb.tokens
 import omni.ext
 
 from omni.services.browser.asset import get_instance as get_asset_services
-from .model import LaubwerkAssetProvider
+from .laubwerk import LaubwerkAssetProvider
 from .constants import SETTING_STORE_ENABLE
 
 
