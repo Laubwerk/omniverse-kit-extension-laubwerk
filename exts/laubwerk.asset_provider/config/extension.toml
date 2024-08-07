@@ -1,10 +1,14 @@
 [package]
+authors = ["Laubwerk"]
+
 # Semantic Versioning is used: https://semver.org/
 version = "1.0.0"
 
 # The title and description fields are primarily for displaying extension info in UI
 title = "Laubwerk Asset Provider"
 description="Provides Laubwerk vegetation assets via the Omniverse Asset Store window."
+
+icon = "data/laubwerk-128x128.png"
 
 # Path (relative to the root) or content of readme markdown file for UI.
 readme  = "docs/README.md"
@@ -13,15 +17,18 @@ readme  = "docs/README.md"
 repository = ""
 
 # One of categories for UI.
-category = "Example"
+category = "services"
 
 # Keywords for the extension
-keywords = ["laubwerk", "vegetation", "search", "asset"]
+keywords = ["laubwerk", "vegetation", "plants", "search", "asset"]
 
 # Use omni.ui to build simple UI
 [dependencies]
 "omni.services.browser.asset" = {}
 
-# Main python module this extension provides, it will be publicly available as "import omni.hello.world".
+# Main python module this extension provides, it will be publicly available as "import laubwerk.asset_provider".
 [[python.module]]
-name = "omni.assetprovider.template"
+name = "laubwerk.asset_provider"
+
+[settings]
+exts."laubwerk.asset_provider".enable = true

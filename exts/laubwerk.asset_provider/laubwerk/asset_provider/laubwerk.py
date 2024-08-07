@@ -13,6 +13,7 @@ import aiohttp
 from omni.services.browser.asset import BaseAssetStore, AssetModel, SearchCriteria, ProviderModel
 from .constants import SETTING_STORE_ENABLE
 from pathlib import Path
+import logging
 
 CURRENT_PATH = Path(__file__).parent
 DATA_PATH = CURRENT_PATH.parent.parent.parent.parent.joinpath("data")
@@ -20,7 +21,7 @@ DATA_PATH = CURRENT_PATH.parent.parent.parent.parent.joinpath("data")
 # The name of your company
 PROVIDER_ID = "Laubwerk"
 # The URL location of your API
-STORE_URL = "https://stage.api.laubwerk.com/1/search"
+STORE_URL = "https://api.laubwerk.com/1/search"
 
 
 class LaubwerkAssetProvider(BaseAssetStore):
@@ -41,6 +42,9 @@ class LaubwerkAssetProvider(BaseAssetStore):
         params = {}
 
         assets: List[AssetModel] = []
+
+        logger = logging.getLogger(__name__)
+        logger.error("search() function called.")
 
         # Setting for filter search criteria
         if search_criteria.filter.categories:
@@ -80,7 +84,7 @@ class LaubwerkAssetProvider(BaseAssetStore):
         if search_criteria.page.size:
             params["per_page"] = search_criteria.page.size
 
-        params["filter[.relationships.collections.data]"] = "includes(kit-freebie,id)"
+        #params["filter[.relationships.collections.data]"] = "includes(kit-freebie,id)"
 
         # Call the search resource with the assembled parameters and the guest
         # login.
@@ -90,6 +94,7 @@ class LaubwerkAssetProvider(BaseAssetStore):
                 #result = await resp.read()
                 result = await resp.json()
 
+        logger.error(result)
         items = result["data"]
 
         assets: List[AssetModel] = []
@@ -143,5 +148,5 @@ class LaubwerkAssetProvider(BaseAssetStore):
     def provider(self) -> ProviderModel:
         """Return provider info"""
         return ProviderModel(
-            name=PROVIDER_ID, icon=f"{DATA_PATH}/laubwerk_logo.png", enable_setting=SETTING_STORE_ENABLE
+            name=PROVIDER_ID, icon=f"{DATA_PATH}/laubwerk-64x64.png", enable_setting=SETTING_STORE_ENABLE
         )
